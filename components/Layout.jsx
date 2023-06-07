@@ -12,8 +12,12 @@ function Layout({ title, children, user }) {
           crossOrigin="anonymous"
         />
         <link rel="stylesheet" href="/style.css" />
-        {/* <script defer src="/scripts/script.js" /> */}
         <script defer src="/auth.js" />
+        <script
+          src="https://api-maps.yandex.ru/2.1/?apikey=8060eaa3-444b-41e9-9731-5f92109b4358&lang=ru_RU"
+          type="text/javascript"
+        ></script>
+        <script type="text/javascript" defer src="/test.js" />
       </head>
       <body>{children}</body>
     </html>
