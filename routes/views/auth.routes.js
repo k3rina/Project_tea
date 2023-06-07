@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const Log = require("../../components/Loga");
-const Reg = require("../../components/Rega");
+const Loga = require("../../components/Loga");
+const Rega = require("../../components/Rega");
 
 router.get("/log", (req, res) => {
   res.send(res.renderComponent(Loga, { title: "Authorization page" }));
