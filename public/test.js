@@ -1,25 +1,28 @@
 ymaps.ready(init);
 function init() {
   const myMap = new ymaps.Map(
-    "map",
+    'map',
     {
       center: [0, 0],
       zoom: 2,
     },
     {
-      searchControlProvider: "yandex#search",
+      minZoom: 2,
+    },
+    {
+      searchControlProvider: 'yandex#search',
     }
   );
   myFisrt = new ymaps.GeoObject({
     // Описание геометрии.
     geometry: {
-      type: "Point",
+      type: 'Point',
       coordinates: [55.8, 37.8],
     },
     // Свойства.
     properties: {
       // Контент метки.
-      iconContent: "Я тащусь",
+      iconContent: 'Я тащусь',
       hintContent: '<a href = "yandex.ru">Рога и копыта</a><br>',
     },
   });
@@ -28,13 +31,13 @@ function init() {
   mySecond = new ymaps.GeoObject({
     // Описание геометрии.
     geometry: {
-      type: "Point",
+      type: 'Point',
       coordinates: [20, 20],
     },
     // Свойства.
     properties: {
       // Контент метки.
-      iconContent: "Я тащусь",
+      iconContent: 'Я тащусь',
       hintContent: '<a href = "google.com">Рога и копыта</a><br>',
     },
   });

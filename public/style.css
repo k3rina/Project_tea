@@ -1,11 +1,12 @@
 body {
   display: flex;
   align-items: center;
-  justify-content: center;
+
+
+.navbar {
+  width: 100%;
 }
-#add-tea {
-  display: flex;
-  width: 500px;
-  flex-direction: column;
-  align-items: center;
+.container {
+  min-width: 100%;
+
 }
