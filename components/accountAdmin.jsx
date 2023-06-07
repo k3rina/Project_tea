@@ -1,15 +1,17 @@
 const React = require("react");
 const Layout = require("./Layout");
-const TeaItem = require("./TeaItem");
+const Item = require("./Item");
+const FormAddTea = require("./FormAddTea");
 
-function accountAdmin({ title, teas }) {
+function accountAdmin({ title, teas = [] }) {
   console.log(teas);
   return (
-    <Layout title={title} user={user}>
-      <TeaItem />
-      <div className="animals_list">
+    <Layout title={title}>
+      <FormAddTea />
+      <br />
+      <div className="teas_list">
         {teas.map((tea) => (
-          <TeaItem tea={tea} />
+          <Item tea={tea} />
         ))}
       </div>
     </Layout>
