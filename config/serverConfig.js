@@ -1,3 +1,4 @@
+
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const path = require("path");
@@ -6,6 +7,7 @@ const ssr = require("../middleware/ssr");
 // const getUser = require('../middleware/getUser');
 const getAdmin = require("../middleware/getAdmin");
 const sessionConfig = require("./sessionConfig");
+
 
 const config = (app) => {
   app.use(cookieParser());

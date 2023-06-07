@@ -22,6 +22,7 @@ router.post("/reg", async (req, res) => {
     const hash = await bcrypt.hash(password, 10);
     user = await User.create({ name, email, password: hash });
     req.session.userId = user.id;
+    console.log(user);
     res.json({ message: "ok" });
   } catch ({ message }) {
     res.json({ message });

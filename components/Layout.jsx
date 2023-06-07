@@ -1,4 +1,5 @@
 const React = require("react");
+const Navbar = require("./Navbar");
 
 function Layout({ title, children, user }) {
   return (
@@ -15,7 +16,12 @@ function Layout({ title, children, user }) {
         {/* <script defer src="/scripts/script.js" /> */}
         <script defer src="/auth.js" />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className="container">
+        <Navbar user={user} />
+        {children}
+        </div>
+      </body>
     </html>
   );
 }

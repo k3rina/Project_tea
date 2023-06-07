@@ -21,17 +21,18 @@ module.exports = function Navigation({ user }) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <div className="nav-link">Мир чая</div>
+              <h2 className="navbar-brand">
+                Мир чая
+              </h2>
             </li>
             {user ? (
               <>
-                <h3>Hello, {user.name}</h3>
-                <li className="nav-item">
-                  <a className="nav-link" href="/api/auth/logout">
-                    Logout
-                  </a>
-                </li>
-              </>
+              <h4>Hello, {user.name}</h4>
+            <li className="nav-item">
+              <a className="nav-link" href="/api/auth/logout">
+                Logout
+              </a>
+            </li></>
             ) : (
               <>
                 <li className="nav-item">
