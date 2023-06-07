@@ -1,4 +1,4 @@
-const { User } = require('../db/models');
+const { User } = require("../db/models");
 
 async function getUser(req, res, next) {
   if (req.session.userId) {
