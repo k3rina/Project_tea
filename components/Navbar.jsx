@@ -1,6 +1,6 @@
 const React = require("react");
 
-module.exports = function Navigation({user}) {
+module.exports = function Navigation({ user }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -21,32 +21,36 @@ module.exports = function Navigation({user}) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <div className="nav-link">
-                Мир чая
-              </div>
+              <div className="nav-link">Мир чая</div>
             </li>
             {user ? (
               <>
-              <h3>Hello, {user.name}</h3>
-            <li className="nav-item">
-              <a className="nav-link" href="/api/auth/logout">
-                Logout
-              </a>
-            </li></>
+                <h3>Hello, {user.name}</h3>
+                <li className="nav-item">
+                  <a className="nav-link" href="/api/auth/logout">
+                    Logout
+                  </a>
+                </li>
+              </>
             ) : (
               <>
                 <li className="nav-item">
-              <a className="nav-link" href="/auth/log">
-                Log
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/auth/reg">
-                Reg
-              </a>
-            </li>
+                  <a className="nav-link" href="/auth/log">
+                    Log
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/auth/reg">
+                    Reg
+                  </a>
+                </li>
               </>
             )}
+            <li className="nav-item">
+              <a className="nav-link" href="/api/admin">
+                Личный кабинет
+              </a>
+            </li>
           </ul>
         </div>
       </div>
