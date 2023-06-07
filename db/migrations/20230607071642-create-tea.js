@@ -25,14 +25,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      admin_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Admins",
-          key: "id",
-        },
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

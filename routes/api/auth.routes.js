@@ -22,6 +22,7 @@ router.post("/reg", async (req, res) => {
     const hash = await bcrypt.hash(password, 10);
     user = await User.create({ name, email, password: hash });
     req.session.userId = user.id;
+    console.log(user);
     res.json({ message: "ok" });
   } catch ({ message }) {
     res.json({ message });
@@ -38,13 +39,14 @@ router.post("/log", async (req, res) => {
       res.json({ message: "Заполните все поля" });
       return;
     }
-    if (!user || !compare) {
+    if (!user || !compare ) {
       res.json({
         message: "Такого пользователя не существует или пароль неверный",
       });
       return;
     }
     req.session.userId = user.id;
+    req.session.isAdmin = user.isAdmin;
     res.json({ message: "ok" });
   } catch ({ message }) {
     res.json({ message });

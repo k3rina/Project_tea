@@ -2,8 +2,7 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Tea extends Model {
-    static associate({ Admin, Comment }) {
-      this.belongsTo(Admin, { foreignKey: "admin_id" });
+    static associate({ Comment }) {
       this.hasMany(Comment, { foreignKey: "tea_id" });
     }
   }
@@ -29,14 +28,6 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       allowNull: false,
       type: DataTypes.TEXT,
-    },
-    admin_id: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Admins",
-        key: "id",
-      },
     },
     createdAt: {
       allowNull: false,
