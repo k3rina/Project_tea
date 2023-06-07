@@ -22,6 +22,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
+      isAdmin: {
+        defaultValue: false,
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

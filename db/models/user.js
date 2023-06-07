@@ -26,6 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT,
     },
+    isAdmin: {
+      defaultValue: false,
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,

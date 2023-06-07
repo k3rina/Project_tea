@@ -1,9 +1,9 @@
 const React = require("react");
 const Layout = require("./Layout");
 
-module.exports = function Loga({ title, name }) {
+module.exports = function Loga({ title }) {
   return (
-    <Layout title={title} name={name}>
+    <Layout title={title}>
       <h2>Login</h2>
       <form id="log_form" action="/auth/log" method="post">
         <div className="mb-3">
@@ -31,7 +31,7 @@ module.exports = function Loga({ title, name }) {
             required
           />
         </div>
-        <p style={{ color: 'red' }} className="message" />
+        <p style={{ color: "red" }} className="message" />
         <button type="submit" className="btn btn-primary">
           Login user
         </button>

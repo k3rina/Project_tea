@@ -24,9 +24,9 @@ module.exports = function Navigation({ user }) {
               <h2 className="navbar-brand">
                 Мир чая
               </h2>
-            </li>
-            {user ? (
-              <>
+            </li> 
+            {(user) ?
+              (<>
               <h4>Hello, {user.name}</h4>
             <li className="nav-item">
               <a className="nav-link" href="/api/auth/logout">

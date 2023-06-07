@@ -39,13 +39,14 @@ router.post("/log", async (req, res) => {
       res.json({ message: "Заполните все поля" });
       return;
     }
-    if (!user || !compare) {
+    if (!user || !compare ) {
       res.json({
         message: "Такого пользователя не существует или пароль неверный",
       });
       return;
     }
     req.session.userId = user.id;
+    req.session.isAdmin = user.isAdmin;
     res.json({ message: "ok" });
   } catch ({ message }) {
     res.json({ message });
