@@ -4,7 +4,7 @@ const { Tea } = require("../../db/models");
 router.get("/dot", async (reg, res) => {
   try {
     const teasRaw = await Tea.findAll({ raw: true });
-    
+
     const teas = teasRaw.map((el) => {
       return {
         ...el,
@@ -12,9 +12,7 @@ router.get("/dot", async (reg, res) => {
       };
     });
     res.json(teas);
-  } catch (error) {
-    console.log(error, "-----------------------------------------------");
-  }
+  } catch (error) 
 });
 
 module.exports = router;
