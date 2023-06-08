@@ -13,7 +13,7 @@ router.get("/dot", async (reg, res) => {
     });
     res.json(teas);
   } catch (error) {
-    console.log(error, "------------------------------------------------");
+    console.log(error, "-----------------------------------------------");
   }
 });
 
