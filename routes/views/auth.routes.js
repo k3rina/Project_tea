@@ -12,10 +12,10 @@ router.get('/reg', (req, res) => {
   res.send(res.renderComponent(Rega, { title: 'Registration page' }));
 });
 
-router.get('/userArea', async (req, res) => {
-  const { id } = req.session.userId;
-  const comments = await Comment.findAll({ where: { id: card.user_id } });
-  res.send(res.renderComponent(UserArea, { comments }));
-});
+// router.get('/userArea', async (req, res) => {
+//   const { id } = req.session.userId;
+//   const comments = await Comment.findAll({ where: { id: card.user_id } });
+//   res.send(res.renderComponent(UserArea, { comments }));
+// });
 
 module.exports = router;

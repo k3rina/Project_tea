@@ -2,6 +2,7 @@ const React = require("react");
 const Navbar = require("./Navbar");
 
 function Layout({ title, children, user }) {
+  // console.log(user);
   return (
     <html lang="en">
       <head>
