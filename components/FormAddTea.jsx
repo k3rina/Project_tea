@@ -47,6 +47,17 @@ function FormAddTea() {
           id="exampleInputPassword1"
         />
       </div>
+      <div className="mb-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">
+          Map
+        </label>
+        <input
+          name="map"
+          type="text"
+          className="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
       <button type="submit" className="btn btn-primary">
         Add Tea
       </button>

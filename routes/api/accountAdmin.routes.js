@@ -15,12 +15,13 @@ router.get("/", async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { name, image, location, description } = req.body;
+    const { name, image, location, description, map } = req.body;
     const newTea = await Tea.create({
       name,
       image,
       location,
       description,
+      map,
     });
     // console.log(newTea);
     res.json({

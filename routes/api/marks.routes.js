@@ -12,7 +12,9 @@ router.get("/dot", async (reg, res) => {
       };
     });
     res.json(teas);
-  } catch (error) 
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;

@@ -1,7 +1,6 @@
 const React = require("react");
 
 function Item({ tea }) {
-  //console.log(tea.name);
   return (
     <>
       <div data-id={tea.id} className="card" style={{ width: "18rem" }}>

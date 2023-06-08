@@ -4,7 +4,6 @@ const Item = require("./Item");
 const FormAddTea = require("./FormAddTea");
 
 function accountAdmin({ title, teas = [], user}) {
-  // console.log(teas);
   return (
     <Layout title={title} user={user}>
       <hr />

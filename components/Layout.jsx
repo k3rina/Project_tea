@@ -2,7 +2,6 @@ const React = require("react");
 const Navbar = require("./Navbar");
 
 function Layout({ title, children, user }) {
-  // console.log(user);
   return (
     <html lang="ru">
       <head>
@@ -27,12 +26,10 @@ function Layout({ title, children, user }) {
           <Navbar user={user} />
           {children}
         </div>
-      </body>
       <footer
         className="text-center text-white fixed-bottom"
         style={{ backgroundColor: "#21081a"}}
       >
-        <div className="container p-4"></div>
         <div
           className="text-center p-3"
           style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}
@@ -43,6 +40,7 @@ function Layout({ title, children, user }) {
           </a>
         </div>
       </footer>
+      </body>
     </html>
   );
 }

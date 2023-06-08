@@ -1,9 +1,10 @@
 const addTea = document.querySelector("#add-tea");
 const deleteTea = document.querySelector(".teas");
+
 if (addTea) {
   addTea.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const { name, image, location, description } = e.target;
+    const { name, image, location, description, map } = e.target;
     // console.log(e.target);
     const res = await fetch("/api/admin", {
       method: "POST",
@@ -15,6 +16,7 @@ if (addTea) {
         image: image.value,
         location: location.value,
         description: description.value,
+        map: map.value,
       }),
     });
     const data = await res.json();
@@ -40,7 +42,7 @@ if (deleteTea) {
       if (data.message === "success") {
         card.remove();
       } else {
-        console.log(data);
+        // console.log(data);
         alert(data.message);
       }
     }

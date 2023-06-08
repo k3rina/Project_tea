@@ -502,7 +502,6 @@ function init() {
     const response = await fetch("/api/marks/dot");
 
     const arr = await response.json();
-    console.log(arr);
     arr.forEach((el) => {
       // console.log(el.map);
       const obj = new ymaps.Placemark(el.map, {
