@@ -4,7 +4,8 @@ const Layout = require("./Layout");
 module.exports = function Rega({ title }) {
   return (
     <Layout title={title}>
-      <h2>Регистрация</h2>
+      <h2 id="rega">Регистрация</h2>
+      <br />
       <form id="reg_form" action="/api/auth/reg" method="POST">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">

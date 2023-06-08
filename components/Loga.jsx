@@ -4,7 +4,8 @@ const Layout = require("./Layout");
 module.exports = function Loga({ title }) {
   return (
     <Layout title={title}>
-      <h2>Login</h2>
+      <h2 id="loga">Авторизация</h2>
+      <br />
       <form id="log_form" action="/auth/log" method="post">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">

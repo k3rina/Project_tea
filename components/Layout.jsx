@@ -4,7 +4,7 @@ const Navbar = require("./Navbar");
 function Layout({ title, children, user }) {
   // console.log(user);
   return (
-    <html lang="en">
+    <html lang="ru">
       <head>
         <title>{title}</title>
         <link rel="stylesheet" href="/style.css" />
@@ -20,6 +20,7 @@ function Layout({ title, children, user }) {
           type="text/javascript"
         ></script>
         <script type="text/javascript" defer src="/test.js" />
+        <script type="text/javascript" defer src="/teas.js" />
       </head>
       <body>
         <div className="container">
@@ -27,6 +28,21 @@ function Layout({ title, children, user }) {
           {children}
         </div>
       </body>
+      <footer
+        className="text-center text-white fixed-bottom"
+        style={{ backgroundColor: "#21081a"}}
+      >
+        <div className="container p-4"></div>
+        <div
+          className="text-center p-3"
+          style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}
+        >
+          © 2023 Copyright:
+          <a className="text-white" href="/">
+            чай.com
+          </a>
+        </div>
+      </footer>
     </html>
   );
 }

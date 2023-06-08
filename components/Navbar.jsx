@@ -4,12 +4,12 @@ module.exports = function Navigation({ user }) {
   return (
     <nav className="container" style={{ width: "100vw", marginLeft: "0" }}>
       <div className="navig">
-        <div>
-          <a className="navbar-brand" href="/">
-            Main page
+        <div className="glav">
+          <a className="btn1 nav-link" href="/">
+            Главная
           </a>
           <button
-            className="navbar-toggler"
+            className="btn1 navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -28,18 +28,18 @@ module.exports = function Navigation({ user }) {
             <h5>Hello, {user.name}</h5>
 
             <div className="nav-item">
-              <a className="nav-link" href="/api/auth/logout">
+              <a className="btn1 nav-link" href="/api/auth/logout">
                 Logout
               </a>
             </div>          
             {(user.isAdmin === "true") ? (
               <div className="nav-item">
-                <a className="nav-link" href="/admin">
+                <a className="btn1 nav-link" href="/admin">
                   Личный кабинет
                 </a>
               </div>) : (
               <div className="nav-item">
-                <a className="nav-link" href="/auth/users/userArea">
+                <a className="btn1 nav-link" href="/auth/users/userArea">
                   Личный кабинет
                 </a>
               </div>)}
@@ -47,12 +47,12 @@ module.exports = function Navigation({ user }) {
         ) : (
           <>
             <div className="nav-item">
-              <a className="nav-link" href="/auth/log">
+              <a className="btn1 nav-link" href="/auth/log">
                 Авторизация
               </a>
             </div>
             <div className="nav-item">
-              <a className="nav-link" href="/auth/reg">
+              <a className="btn1 nav-link" href="/auth/reg">
                 Регистрация
               </a>
             </div>

@@ -3,7 +3,7 @@ const { Tea } = require("../../db/models");
 const accountAdmin = require("../../components/accountAdmin");
 
 router.get("/", async (req, res) => {
-  const teas = await Tea.findAll({ order: [["id", "ASC"]] });
+  const teas = await Tea.findAll();
   res.send(
     res.renderComponent(accountAdmin, { title: "Admin's Account", teas })
   );

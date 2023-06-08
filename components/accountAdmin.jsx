@@ -7,7 +7,9 @@ function accountAdmin({ title, teas = [], user}) {
   // console.log(teas);
   return (
     <Layout title={title} user={user}>
+      <hr />
       <FormAddTea />
+      <br />
       <br />
       <div className="teas">
         {teas.map((tea) => (
