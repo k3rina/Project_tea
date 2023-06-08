@@ -4,6 +4,7 @@ const path = require("path");
 const session = require("express-session");
 const ssr = require("../middleware/ssr");
 const getUser = require("../middleware/getUser");
+
 const sessionConfig = require("./sessionConfig");
 
 const config = (app) => {
