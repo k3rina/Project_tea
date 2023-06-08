@@ -21,16 +21,20 @@ module.exports = function Navigation({ user }) {
         >
           <span className='navbar-toggler-icon'></span>
         </button>
-        <div className='collapse navbar-collapse' id='navbarNav'>
-          <ul className='navbar-nav'>
-            <li className='nav-item'>
-              <h2 className='navbar-brand'>Мир чая</h2>
+
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <h2 className="navbar-brand">Мир чая</h2>
+
             </li>
             {user ? (
               <>
                 <h4>Hello, {user.name}</h4>
-                <li className='nav-item'>
-                  <a className='nav-link' href='/api/auth/logout'>
+
+                <li className="nav-item">
+                  <a className="nav-link" href="/api/auth/logout">
+
                     Logout
                   </a>
                 </li>
@@ -49,13 +53,16 @@ module.exports = function Navigation({ user }) {
                 </li>
               </>
             )}
-            <li className='nav-item'>
-              <a className='nav-link' href='/api/admin'>
+
+            <li className="nav-item">
+              <a className="nav-link" href="/admin">
+
                 Личный кабинет
               </a>
             </li>
             <li className='nav-item'>
               <a className='nav-link' href='/auth/users/userArea'>
+
                 Личный кабинет
               </a>
             </li>

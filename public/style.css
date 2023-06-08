@@ -1,11 +1,12 @@
 body {
   display: flex;
   align-items: center;
-}
+
 
 .navbar {
   width: 100%;
 }
 .container {
   min-width: 100%;
+
 }

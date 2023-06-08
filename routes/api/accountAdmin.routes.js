@@ -4,10 +4,11 @@ const { Tea } = require("../../db/models");
 router.get("/", async (req, res) => {
   try {
     const teas = await Tea.findAll({ raw: true });
-    console.log(teas);
+    // console.log(teas);
     res.json(teas);
   } catch ({ message }) {
     res.json({ message });
   }
 });
+
 module.exports = router;
