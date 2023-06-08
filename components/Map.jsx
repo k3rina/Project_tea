@@ -8,5 +8,5 @@ const App = ({ user, title }) => (
     </>
   </Layout>
 );
-
+console.log("111111111");
 module.exports = App;
