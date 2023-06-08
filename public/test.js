@@ -1,80 +1,80 @@
 const REGIONS_DATA = {
     region: {
-      title: 'Регион',
+      title: "Регион",
       items: [
         {
-          id: '001',
-          title: 'Страны мира',
+          id: "001",
+          title: "Страны мира",
         },
         {
-          id: 'BY',
-          title: 'Беларусь',
+          id: "BY",
+          title: "Беларусь",
         },
         {
-          id: 'KZ',
-          title: 'Казахстан',
+          id: "KZ",
+          title: "Казахстан",
         },
         {
-          id: 'RU',
-          title: 'Россия',
+          id: "RU",
+          title: "Россия",
         },
         {
-          id: 'TR',
-          title: 'Турция',
+          id: "TR",
+          title: "Турция",
         },
         {
-          id: 'UA',
-          title: 'Украина',
+          id: "UA",
+          title: "Украина",
         },
       ],
     },
     lang: {
-      title: 'Язык',
+      title: "Язык",
       items: [
         {
-          id: 'en',
-          title: 'Английский',
+          id: "en",
+          title: "Английский",
         },
         {
-          id: 'be',
-          title: 'Белорусский',
+          id: "be",
+          title: "Белорусский",
         },
         {
-          id: 'kk',
-          title: 'Казахский',
+          id: "kk",
+          title: "Казахский",
         },
         {
-          id: 'ru',
-          title: 'Русский',
+          id: "ru",
+          title: "Русский",
         },
         {
-          id: 'tr',
-          title: 'Турецкий',
+          id: "tr",
+          title: "Турецкий",
         },
         {
-          id: 'uk',
-          title: 'Украинский',
+          id: "uk",
+          title: "Украинский",
         },
       ],
     },
     quality: {
-      title: 'Точность границ',
+      title: "Точность границ",
       items: [
         {
-          id: '0',
-          title: '0',
+          id: "0",
+          title: "0",
         },
         {
-          id: '1',
-          title: '1',
+          id: "1",
+          title: "1",
         },
         {
-          id: '2',
-          title: '2',
+          id: "2",
+          title: "2",
         },
         {
-          id: '3',
-          title: '3',
+          id: "3",
+          title: "3",
         },
       ],
     },
@@ -82,30 +82,30 @@ const REGIONS_DATA = {
   // Шаблон html-содержимого макета.
   optionsTemplate = [
     '<div style="line-height: 34px;" id="regions-params">',
-    '{% for paramName, param in data.params %}',
-    '{% for key, value in state.values %}',
-    '{% if key == paramName %}',
+    "{% for paramName, param in data.params %}",
+    "{% for key, value in state.values %}",
+    "{% if key == paramName %}",
     '<div class="btn-group btn-group-xs">',
     '<button{% if state.enabled %}{% else %} disabled{% endif %} type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">',
-    '<span>{{ param.title }}</span>',
+    "<span>{{ param.title }}</span>",
     '<span class="value">: {{ value }}</span>',
     '&nbsp;<span class="caret"></span>',
-    '</button>',
+    "</button>",
     '<ul class="dropdown-menu {{ paramName }}">',
-    '{% for item in param.items %}',
+    "{% for item in param.items %}",
     '<li{% if item.id == value %} class="active"{% endif %}>',
     '<a id="regions" href="#" data-param="{{ paramName }}" data-id="{{ item.id }}">',
-    '{{ item.title }}',
-    '</a>',
-    '</li>',
-    '{% endfor %}',
-    '</ul>',
-    '</div>&nbsp;',
-    '{% endif %}',
-    '{% endfor %}',
-    '{% endfor %}',
-    '</div>',
-  ].join('');
+    "{{ item.title }}",
+    "</a>",
+    "</li>",
+    "{% endfor %}",
+    "</ul>",
+    "</div>&nbsp;",
+    "{% endif %}",
+    "{% endfor %}",
+    "{% endfor %}",
+    "</div>",
+  ].join("");
 
 ymaps.ready(init);
 
@@ -117,20 +117,20 @@ function init() {
         build: function () {
           RegionControlLayout.superclass.build.call(this);
           this.handleClick = ymaps.util.bind(this.handleClick, this);
-          $(this.getParentElement).on('click', 'a#regions', this.handleClick);
+          $(this.getParentElement).on("click", "a#regions", this.handleClick);
         },
         clear: function () {
-          $(this.getParentElement).off('click', 'a#regions', this.handleClick);
+          $(this.getParentElement).off("click", "a#regions", this.handleClick);
           RegionControlLayout.superclass.clear.call(this);
         },
         handleClick: function (e) {
           e.preventDefault();
           var $target = $(e.currentTarget);
           var state = this.getData().state;
-          var newValues = ymaps.util.extend({}, state.get('values'));
-          if (!$target.hasClass('active')) {
-            newValues[$target.data('param')] = $target.data('id');
-            state.set('values', newValues);
+          var newValues = ymaps.util.extend({}, state.get("values"));
+          if (!$target.hasClass("active")) {
+            newValues[$target.data("param")] = $target.data("id");
+            state.set("values", newValues);
           }
         },
       }
@@ -145,7 +145,7 @@ function init() {
         onAddToMap: function (map) {
           RegionControl.superclass.onAddToMap.call(this, map);
           this.setupStateMonitor();
-          this.loadRegions(this.state.get('values'));
+          this.loadRegions(this.state.get("values"));
         },
 
         onRemoveFromMap: function (map) {
@@ -156,7 +156,7 @@ function init() {
 
         setupStateMonitor: function () {
           this.stateMonitor = new ymaps.Monitor(this.state);
-          this.stateMonitor.add('values', this.handleStateChange, this);
+          this.stateMonitor.add("values", this.handleStateChange, this);
         },
 
         clearStateMonitor: function () {
@@ -177,9 +177,9 @@ function init() {
             res.features.map(function (feature) {
               feature.id = feature.properties.iso3166;
               feature.options = {
-                strokeColor: '#ffffff',
+                strokeColor: "#ffffff",
                 strokeOpacity: 0.4,
-                fillColor: '#00ff00',
+                fillColor: "#00ff00",
                 fillOpacity: 0.3,
                 hintCloseTimeout: 0,
                 hintOpenTimeout: 0,
@@ -189,20 +189,20 @@ function init() {
           );
           map.geoObjects.add(this.regions);
 
-          this.selectedRegionId = '';
+          this.selectedRegionId = "";
           this.regions.events
             .add(
-              'mouseenter',
+              "mouseenter",
               function (e) {
-                var id = e.get('objectId');
+                var id = e.get("objectId");
                 this.regions.objects.setObjectOptions(id, { strokeWidth: 2 });
               },
               this
             )
             .add(
-              'mouseleave',
+              "mouseleave",
               function (e) {
-                var id = e.get('objectId');
+                var id = e.get("objectId");
                 if (this.selectedRegionId !== id) {
                   this.regions.objects.setObjectOptions(id, { strokeWidth: 1 });
                 }
@@ -210,18 +210,18 @@ function init() {
               this
             )
             .add(
-              'click',
+              "click",
               function (e) {
-                var id = e.get('objectId');
+                var id = e.get("objectId");
                 if (this.selectedRegionId) {
                   this.regions.objects.setObjectOptions(this.selectedRegionId, {
                     strokeWidth: 1,
-                    fillColor: '#6961b0',
+                    fillColor: "#6961b0",
                   });
                 }
                 this.regions.objects.setObjectOptions(id, {
                   strokeWidth: 2,
-                  fillColor: '#3B3781',
+                  fillColor: "#3B3781",
                 });
                 this.selectedRegionId = id;
               },
@@ -242,11 +242,11 @@ function init() {
       }
     ),
     map = new ymaps.Map(
-      'map',
+      "map",
       {
         center: [0, 0],
         zoom: 2,
-        controls: ['typeSelector'],
+        controls: ["typeSelector"],
       },
       {
         minZoom: 2,
@@ -256,7 +256,7 @@ function init() {
     regionControl = new RegionControl({
       state: {
         values: {
-          region: '001',
+          region: "001",
           // lang: 'en',
           // quality: '1',
         },
@@ -268,6 +268,25 @@ function init() {
         layout: RegionControlLayout,
       },
     });
+  // const ball = await fetch({
+
+  // })
+
+  //   const arrayTea = res.locals.tea
+  //   const newTea = arrayTea.map((el )=>{
+  //     const tea = new  ymaps.Placemark([+(el.map)],{
+  //       balloonContentHeader:
+  //       `<a href = "/main/id">${el.location}</a><br>` +
+  //       '<span class="description">индийский чай</span>',
+  //     // Зададим содержимое основной части балуна.
+  //     balloonContentBody:
+  //       '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //     // Зададим содержимое нижней части балуна.
+  //     balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //     // Зададим содержимое всплывающей подсказки.
+  //     hintContent: 'Индийский зеленый чай',
+  //     })
+  //   })
 
   const placemark1 = new ymaps.Placemark([23.97, 78.26], {
     // Зададим содержимое заголовка балуна.
@@ -280,222 +299,228 @@ function init() {
     // Зададим содержимое нижней части балуна.
     balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
     // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
+    hintContent: "Индийский зеленый чай",
   });
 
-  const placemark2 = new ymaps.Placemark([23, 78], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
-  const placemark3 = new ymaps.Placemark([25, 78], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark2 = new ymaps.Placemark([23, 78], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
+  // const placemark3 = new ymaps.Placemark([25, 78], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
 
-  const placemark4 = new ymaps.Placemark([21, 75], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark4 = new ymaps.Placemark([21, 75], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
 
-  const placemark5 = new ymaps.Placemark([12, 95], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark5 = new ymaps.Placemark([12, 95], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
 
-  const placemark6 = new ymaps.Placemark([26, 128], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
-  const placemark7 = new ymaps.Placemark([50, 50], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark6 = new ymaps.Placemark([26, 128], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
+  // const placemark7 = new ymaps.Placemark([50, 50], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
 
-  const placemark8 = new ymaps.Placemark([11, 75], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark8 = new ymaps.Placemark([11, 75], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
 
-  const placemark9 = new ymaps.Placemark([122.97, 10.26], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark9 = new ymaps.Placemark([122.97, 10.26], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
 
-  const placemark10 = new ymaps.Placemark([3, 178], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
-  const placemark11 = new ymaps.Placemark([125, 8], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark10 = new ymaps.Placemark([3, 178], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
+  // const placemark11 = new ymaps.Placemark([125, 8], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
 
-  const placemark12 = new ymaps.Placemark([123, 35], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark12 = new ymaps.Placemark([123, 35], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
 
-  const placemark13 = new ymaps.Placemark([44, 105], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark13 = new ymaps.Placemark([44, 105], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
 
-  const placemark14 = new ymaps.Placemark([32, 1], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
-  const placemark15 = new ymaps.Placemark([111, 111], {
-    // Зададим содержимое заголовка балуна.
-    balloonContentHeader:
-      '<a href = "/main/id">Индия</a><br>' +
-      '<span class="description">индийский чай</span>',
-    // Зададим содержимое основной части балуна.
-    balloonContentBody:
-      '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
-    // Зададим содержимое нижней части балуна.
-    balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
-    // Зададим содержимое всплывающей подсказки.
-    hintContent: 'Индийский зеленый чай',
-  });
+  // const placemark14 = new ymaps.Placemark([32, 1], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
+  // });
+  // const placemark15 = new ymaps.Placemark([111, 111], {
+  //   // Зададим содержимое заголовка балуна.
+  //   balloonContentHeader:
+  //     '<a href = "/main/id">Индия</a><br>' +
+  //     '<span class="description">индийский чай</span>',
+  //   // Зададим содержимое основной части балуна.
+  //   balloonContentBody:
+  //     '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+  //   // Зададим содержимое нижней части балуна.
+  //   balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+  //   // Зададим содержимое всплывающей подсказки.
+  //   hintContent: 'Индийский зеленый чай',
 
   // Добавим контрол на карту.
   map.controls.add(regionControl);
-  console.log(regionControl);
-  map.geoObjects.add(placemark1);
-  map.geoObjects.add(placemark2);
-  map.geoObjects.add(placemark3);
-  map.geoObjects.add(placemark4);
-  map.geoObjects.add(placemark5);
-  map.geoObjects.add(placemark6);
-  map.geoObjects.add(placemark7);
-  map.geoObjects.add(placemark8);
-  map.geoObjects.add(placemark9);
-  map.geoObjects.add(placemark10);
-  map.geoObjects.add(placemark11);
-  map.geoObjects.add(placemark12);
-  map.geoObjects.add(placemark13);
-  map.geoObjects.add(placemark14);
-  map.geoObjects.add(placemark15);
+
+  // console.log(regionControl);
+  // map.geoObjects.add(placemark1);
+  const toMarks = async () => {
+    const response = await fetch("/api/marks/dot");
+
+    const arr = await response.json();
+    console.log(arr);
+    arr.forEach((el) => {
+      // console.log(el.map);
+      const obj = new ymaps.Placemark(el.map, {
+        balloonContentHeader:
+          '<a href = "/main/id">Индия</a><br>' +
+          '<span class="description">индийский чай</span>',
+        // Зададим содержимое основной части балуна.
+        balloonContentBody:
+          '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMl_ctzQ8_asaZImbSZS3Omj8rbyOjcaetfg&usqp=CAU" height="150" width="200"> <br/> ',
+        // Зададим содержимое нижней части балуна.
+        balloonContentFooter: 'Информация предоставлена:<br/>OOO "Мир чая"',
+        // Зададим содержимое всплывающей подсказки.
+        hintContent: "Индийский зеленый чай",
+      });
+      map.geoObjects.add(obj);
+    });
+  };
+  toMarks();
+
   placemark1.balloon.open;
-  // Узнавать о изменениях параметров RegionControl можно следующим образом.
-  // regionControl.events.add('statechange', function (e) {
-  //   console.log(e.get('target').get('values'));
-  // });
 }
