@@ -1,7 +1,7 @@
 const React = require("react");
 function FormAddTea() {
   return (
-    <form id="add-tea" action="/api/teas" method="POST">
+    <form className="addteas" id="add-tea" action="/api/teas" method="POST">
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Tea name

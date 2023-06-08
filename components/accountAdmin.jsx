@@ -3,13 +3,13 @@ const Layout = require("./Layout");
 const Item = require("./Item");
 const FormAddTea = require("./FormAddTea");
 
-function accountAdmin({ title, teas = [] }) {
+function accountAdmin({ title, teas = [], user}) {
   // console.log(teas);
   return (
-    <Layout title={title}>
+    <Layout title={title} user={user}>
       <FormAddTea />
       <br />
-      <div className="teas_list">
+      <div className="teas">
         {teas.map((tea) => (
           <Item tea={tea} />
         ))}
