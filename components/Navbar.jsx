@@ -2,7 +2,7 @@ const React = require("react");
 
 module.exports = function Navigation({ user }) {
   return (
-    <nav className="container" style={{ width: "100vw", marginLeft: "0" }}>
+    <nav className="stil container" style={{ width: "100vw", marginLeft: "0" }}>
       <div className="navig">
         <div className="glav">
           <a className="btn1 nav-link" href="/">
@@ -19,39 +19,43 @@ module.exports = function Navigation({ user }) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+          {user && (
+            <>
+              <a className="nav-link">Привет, {user.name}</a>
+            </>
+          )}
         </div>
         <div>
           <h4>Мир чая</h4>
         </div>
         {user ? (
           <>
-            <h5>Hello, {user.name}</h5>
-
-            <div className="nav-item">
-              <a className="btn1 nav-link" href="/api/auth/logout">
-                Logout
-              </a>
-            </div>          
-            {(user.isAdmin === "true") ? (
+            {user.isAdmin === "true" ? (
               <div className="nav-item">
                 <a className="btn1 nav-link" href="/admin">
                   Личный кабинет
                 </a>
-              </div>) : (
+              </div>
+            ) : (
               <div className="nav-item">
-                <a className="btn1 nav-link" href="/auth/users/userArea">
+                <a className="btn1 nav-link" href="/auth/userArea">
                   Личный кабинет
                 </a>
-              </div>)}
+              </div>
+            )}
+            <div className="nav-item">
+              <a className="btn1 nav-link" href="/api/auth/logout">
+                Выйти
+              </a>
+            </div>
           </>
         ) : (
           <>
-            <div className="nav-item">
+            <div className="luboe glav nav-item">
               <a className="btn1 nav-link" href="/auth/log">
                 Авторизация
               </a>
-            </div>
-            <div className="nav-item">
+
               <a className="btn1 nav-link" href="/auth/reg">
                 Регистрация
               </a>

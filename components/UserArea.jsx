@@ -4,10 +4,10 @@ const UserCard = require('./UserCard');
 
 function UserArea({ comments, user }) {
   return (
-    <Layout>
+    <Layout user={user}>
       <div className='card coment-card'>
         {comments.map((comment) => (
-          <UserCard comment={comment} key={comment.id} />
+          <UserCard user={user} comment={comment} key={comment.id} />
         ))}
       </div>
     </Layout>

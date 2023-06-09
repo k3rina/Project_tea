@@ -1,11 +1,12 @@
-const React = require('react');
+const React = require("react");
 
 function UserCard({ comment }) {
   return (
-    <h3>
-      Comment
-      <small class='text-muted'>{comment.text}</small>
-    </h3>
+    <div className="card" style={{ marginTop: "10" }}>
+      <h5>Comment</h5>
+      <div>{comment?.Tea?.name}</div>
+      <div className="text-muted">{comment.text}</div>
+    </div>
   );
 }
 

@@ -9,10 +9,11 @@ router.get('/:CardId', async (req, res) => {
       where: { id: CardId },
     });
     const comments = await Comment.findAll({
+      order: [['id', 'ASC']],
       where: { tea_id: CardId },
       include: { model: User },
     });
-    console.log(comments, '--------------------------');
+    // console.log(comments, '--------------------------');
     res.send(res.renderComponent(TeaCards, { title: 'Tea', teas, comments }));
   } catch ({ message }) {
     res.json({ message });

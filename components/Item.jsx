@@ -8,7 +8,7 @@ function Item({ tea }) {
         <img src={tea.image} className="card-img-top" alt="чай" />
         <div className="card-body">
           <h5 className="card-title">{tea.name}</h5>
-          <p className="card-text">{tea.locatrsion}</p>
+          <p className="card-text">{tea.location}</p>
           <p className="card-text">{tea.description}</p>
           <button type="button" className="btn btn-danger btn-delete">
             Delete

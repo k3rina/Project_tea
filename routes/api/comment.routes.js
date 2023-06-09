@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const CommentItem = require('../../components/CommentItem');
-const { Comment } = require('../../db/models');
+const { Comment, User } = require('../../db/models');
 
 router.post('/:id', async (req, res) => {
   try {
@@ -11,11 +11,13 @@ router.post('/:id', async (req, res) => {
       user_id: req.session.userId,
       tea_id: id,
     });
+    const data1 = await Comment.findOne({where: { id: data.id}, include: { model: User}})
+    // console.log(data1);
     res.json({
       message: 'ok',
       html: res.renderComponent(
         CommentItem,
-        { comment: data },
+        { comment: data1 },
         { htmlOnly: true }
       ),
     });
