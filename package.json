@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js --ext js,json,jsx --ignore ./sessions",
-    "dbr": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all"
+    "dbr": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "db-migrate": "npx sequelize db:migrate"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,7 @@
     "@pbe/react-yandex-maps": "^1.2.4",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
+    "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "morgan": "^1.10.0",
