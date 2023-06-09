@@ -14,11 +14,11 @@ if (form) {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data.html);
     if (data.message === 'ok') {
       document
         .querySelector('.new-comment')
-        .insertAdjacentHTML('beforeend', data.html);
+        .insertAdjacentHTML('beforeend', data.html );
       e.target.reset();
     }
   });
@@ -31,7 +31,7 @@ if (butt) {
     if (e.target.classList.contains('delete')) {
       const card = e.target.closest('.card');
       const { id } = e.target.dataset;
-      console.log(id);
+      // console.log(id);
       const res = await fetch(`/api/card/${id}`, {
         method: 'DELETE',
       });
