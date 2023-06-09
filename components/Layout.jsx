@@ -1,7 +1,7 @@
 const React = require('react');
 const Navbar = require('./Navbar');
 
-function Layout({ title, children, user, teas }) {
+function Layout({ title, children, user, teas, comments }) {
   return (
     <html lang='ru'>
       <head>
@@ -14,6 +14,7 @@ function Layout({ title, children, user, teas }) {
           crossOrigin='anonymous'
         />
         <script defer src='/auth.js' />
+        <script defer src='/script.js' />
         <script
           src='https://api-maps.yandex.ru/2.1/?apikey=8060eaa3-444b-41e9-9731-5f92109b4358&lang=ru_RU'
           type='text/javascript'
